@@ -1,0 +1,61 @@
+{
+  "add": [
+    {
+      "reason": "Email verification - outside our scope",
+      "url": "http:\/\/localhost:9890\/email-verification\/journey\/.*",
+      "ruleId": 90022,
+      "urlIsRegex": "true"
+    },
+    {
+      "reason": "Artefacts - outside our scope",
+      "url": "http:\/\/artefacts.tax.service.gov.uk\/.*",
+      "ruleId": 10021,
+      "urlIsRegex": "true"
+    },
+    {
+      "reason": "Test only page does not need testing",
+      "url": "http://localhost:10801/direct-debit-verify-email/test-only/start",
+      "ruleId": 90022
+    },
+    {
+      "reason": "Test only page does not need testing",
+      "url": "http://localhost:10801/direct-debit-verify-email/test-only/start",
+      "ruleId": 10038
+    },
+    {
+      "reason": "Test only page does not need testing",
+      "url": "http://localhost:10801/direct-debit-verify-email/test-only/start",
+      "ruleId": 10062
+    },
+    {
+      "reason": "Gov.uk - outside our scope",
+      "url": "http:\/\/www.gov.uk\/.*",
+      "ruleId": 10202,
+      "urlIsRegex": "true"
+    },
+        {
+      "reason": "Gov.uk - outside our scope",
+      "url": "https:\/\/www.gov.uk\/.*",
+      "ruleId": 10202,
+      "urlIsRegex": "true"
+    },
+    {
+      "reason": "Gov.uk - outside our scope",
+      "url": "https:\/\/www.gov.uk\/.*",
+      "ruleId": 10021,
+      "urlIsRegex": "true"
+    },
+    {
+      "reason": "Gov.uk - outside our scope",
+      "url": "https:\/\/www.gov.uk\/.*",
+      "ruleId": 10098,
+      "urlIsRegex": "true"
+    },
+    {
+      "reason": "Email verification - outside our scope",
+      "url": "http:\/\/localhost:9890\/email-verification\/journey\/.*",
+      "ruleId": 10038,
+      "urlIsRegex": "true"
+    }
+  ]
+}
