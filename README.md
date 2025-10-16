@@ -1,44 +1,17 @@
-**This is the template README. Please update this with project specific content.**
+# direct-debit-update-email-ui-tests
 
-# update-email-direct-debit-ui-tests
-
-<SERVICE_NAME> UI journey tests.
+UI test suite for the `Direct Debit Update Email`
 
 ## Pre-requisites
 
 ### Services
 
-Start Mongo Docker container as follows:
+Prior to executing the tests ensure you have the appropriate [drivers installed](#installing-local-driver-binaries), install [MongoDB](https://docs.mongodb.com/manual/installation/) and install/configure [service manager](https://github.com/hmrc/service-manager).
 
-```bash
-docker run --rm -d -p 27017:27017 --name mongo percona/percona-server-mongodb:6.0
-```
+Run the following command to start services locally:
 
-Start `<SERVICE_MANAGER_PROFILE>` services as follows:
-
-```bash
-sm2 --start <SERVICE_MANAGER_PROFILE>
-```
-
-## Tests
-
-Run tests as follows:
-
-* Argument `<browser>` must be `chrome`, `edge`, or `firefox`.
-* Argument `<environment>` must be `local`, `dev`, `qa` or `staging`.
-
-```bash
-sbt clean -Dbrowser="<browser>" -Denvironment="<environment>" test testReport
-```
-
-## Scalafmt
-
-Check all project files are formatted as expected as follows:
-
-```bash
-sbt scalafmtCheckAll scalafmtCheck
-```
-
+    sudo mongod
+    sm2 --start DD_UPDATE_EMAIL
 Format `*.sbt` and `project/*.scala` files as follows:
 
 ```bash
