@@ -41,7 +41,7 @@ class HappyPath extends BaseSpec {
       CheckOrChangeEmailAddressPage.pageLoaded()
       CheckOrChangeEmailAddressPage.emailAddressDisplayed("testEmail")
 
-      Then("The email address us displayed in the radio buttons text")
+      Then("The email address is displayed in the radio buttons text")
       CheckOrChangeEmailAddressPage.emailAddressDisplayedAsRadio("testEmail")
     }
 
@@ -62,7 +62,7 @@ class HappyPath extends BaseSpec {
       CheckOrChangeEmailAddressPage.pageLoaded()
       CheckOrChangeEmailAddressPage.emailAddressDisplayed("testEmail")
 
-      Then("The email address us displayed in the radio buttons text")
+      Then("The email address is displayed in the radio buttons text")
       CheckOrChangeEmailAddressPage.emailAddressDisplayedAsRadio("testEmail")
     }
 
@@ -83,7 +83,7 @@ class HappyPath extends BaseSpec {
       CheckOrChangeEmailAddressPage.pageLoaded()
       CheckOrChangeEmailAddressPage.emailAddressDisplayed("testEmail")
 
-      Then("The email address us displayed in the radio buttons text")
+      Then("The email address is displayed in the radio buttons text")
       CheckOrChangeEmailAddressPage.emailAddressDisplayedAsRadio("testEmail")
     }
 
@@ -104,7 +104,7 @@ class HappyPath extends BaseSpec {
       CheckOrChangeEmailAddressPage.pageLoaded()
       CheckOrChangeEmailAddressPage.emailAddressDisplayed("testEmail")
 
-      Then("The email address us displayed in the radio buttons text")
+      Then("The email address is displayed in the radio buttons text")
       CheckOrChangeEmailAddressPage.emailAddressDisplayedAsRadio("testEmail")
     }
 
