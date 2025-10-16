@@ -147,7 +147,6 @@ class HappyPath extends BaseSpec {
       CheckOrChangeEmailAddressPage.selectDifferentEmailAddress()
       CheckOrChangeEmailAddressPage.enterEmailAddress("valid")
       CheckOrChangeEmailAddressPage.clickContinue()
-      
 
       Then("The user is on the code to confirm email page and enters the passcode")
       EnterCodeToConfirmPage.pageLoaded()
@@ -187,7 +186,6 @@ class HappyPath extends BaseSpec {
       CheckOrChangeEmailAddressPage.enterEmailAddress("valid")
       CheckOrChangeEmailAddressPage.clickContinue()
 
-
       Then("The user is on the code to confirm email page and enters the passcode")
       EnterCodeToConfirmPage.pageLoaded()
       EnterCodeToConfirmPage.goToPasscode()
@@ -225,7 +223,6 @@ class HappyPath extends BaseSpec {
       CheckOrChangeEmailAddressPage.selectDifferentEmailAddress()
       CheckOrChangeEmailAddressPage.enterEmailAddress("valid")
       CheckOrChangeEmailAddressPage.clickContinue()
-
 
       Then("The user is on the code to confirm email page and enters the passcode")
       EnterCodeToConfirmPage.pageLoaded()
@@ -265,7 +262,6 @@ class HappyPath extends BaseSpec {
       CheckOrChangeEmailAddressPage.enterEmailAddress("valid")
       CheckOrChangeEmailAddressPage.clickContinue()
 
-
       Then("The user is on the code to confirm email page and enters the passcode")
       EnterCodeToConfirmPage.pageLoaded()
       EnterCodeToConfirmPage.goToPasscode()
@@ -285,7 +281,6 @@ class HappyPath extends BaseSpec {
       EnterCodeToConfirmPage.emailVerifiedPageLoaded()
     }
 
-
     Scenario("Organisation - BTA - User selects Stored email that is already confirmed", allTests) {
 
       Given("user is on Test only starter page")
@@ -303,7 +298,6 @@ class HappyPath extends BaseSpec {
       CheckOrChangeEmailAddressPage.pageLoaded()
       CheckOrChangeEmailAddressPage.selectStoredEmail()
       CheckOrChangeEmailAddressPage.clickContinue()
-
 
       Then("The user is on the code to confirm email page and enters the passcode")
       EnterCodeToConfirmPage.pageLoaded()
@@ -341,7 +335,6 @@ class HappyPath extends BaseSpec {
       CheckOrChangeEmailAddressPage.selectStoredEmail()
       CheckOrChangeEmailAddressPage.clickContinue()
 
-
       Then("The user is on the code to confirm email page and enters the passcode")
       EnterCodeToConfirmPage.pageLoaded()
       EnterCodeToConfirmPage.goToPasscode()
@@ -377,7 +370,6 @@ class HappyPath extends BaseSpec {
       CheckOrChangeEmailAddressPage.pageLoaded()
       CheckOrChangeEmailAddressPage.selectStoredEmail()
       CheckOrChangeEmailAddressPage.clickContinue()
-
 
       Then("The user is on the code to confirm email page and enters the passcode")
       EnterCodeToConfirmPage.pageLoaded()
@@ -415,7 +407,6 @@ class HappyPath extends BaseSpec {
       CheckOrChangeEmailAddressPage.selectStoredEmail()
       CheckOrChangeEmailAddressPage.clickContinue()
 
-
       Then("The user is on the code to confirm email page and enters the passcode")
       EnterCodeToConfirmPage.pageLoaded()
       EnterCodeToConfirmPage.goToPasscode()
@@ -451,7 +442,6 @@ class HappyPath extends BaseSpec {
       CheckOrChangeEmailAddressPage.pageLoaded()
       CheckOrChangeEmailAddressPage.selectStoredEmail()
       CheckOrChangeEmailAddressPage.clickContinue()
-
 
       Then("The user is on the code to confirm email page and enters the passcode")
       EnterCodeToConfirmPage.pageLoaded()

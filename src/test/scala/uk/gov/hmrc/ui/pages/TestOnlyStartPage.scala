@@ -30,57 +30,51 @@ object TestOnlyStartPage extends BasePage {
   }
 
   protected val continueButton: By = By.className("govuk-button")
-  val testEmail: String = "dodgytestemail@test.com"
-  val validEmail: String = "hakangok@icloud.com"
-  val emailWithoutAt: String = "testemail2test.com"
-  val verifiedEmail: String = "hakangok@icloud.com"
-  val storedEmail: String = "hakangok@icloud.com"
-  val verifiableEmail: String = "hakangok@icloud.com"
-  var passcode: String = ""
-  var statusCode: String = ""
-  
+  val testEmail: String            = "dodgytestemail@test.com"
+  val validEmail: String           = "hakangok@icloud.com"
+  val emailWithoutAt: String       = "testemail2test.com"
+  val verifiedEmail: String        = "hakangok@icloud.com"
+  val storedEmail: String          = "hakangok@icloud.com"
+  val verifiableEmail: String      = "hakangok@icloud.com"
+  var passcode: String             = ""
+  var statusCode: String           = ""
 
-  def selectUserType(usertype: String): Unit = {
+  def selectUserType(usertype: String): Unit =
     usertype match {
       case "Organisation" => asAnOrganisation()
-      case "Individual" => asAnIndividual()
+      case "Individual"   => asAnIndividual()
     }
-  }
 
-  def selectOrigin(origin: String): Unit = {
+  def selectOrigin(origin: String): Unit =
     origin match {
-      case "BTA" => selectBTA()
+      case "BTA"   => selectBTA()
       case "EPAYE" => selectEPAYE()
-      case other => throw new Exception(s"Unexpected option: $other")
+      case other   => throw new Exception(s"Unexpected option: $other")
     }
-  }
 
-  def selectRegime(regime: String): Unit = {
+  def selectRegime(regime: String): Unit =
     regime match {
       case "zsdl" => selectZSDL()
       case "vatc" => selectVATC()
-      case "cds" => selectCDS()
-      case "ppt" => selectPPT()
+      case "cds"  => selectCDS()
+      case "ppt"  => selectPPT()
       case "paye" => selectPAYE()
-      case other => throw new Exception(s"Unexpected option: $other")
+      case other  => throw new Exception(s"Unexpected option: $other")
     }
-  }
 
-  def selectEmailBounced(bounced: String): Unit = {
+  def selectEmailBounced(bounced: String): Unit =
     bounced match {
       case "yes" => selectEmailBouncedYes()
-      case "no" => selectEmailBouncedNo()
+      case "no"  => selectEmailBouncedNo()
       case other => throw new Exception(s"Unexpected option: $other")
     }
-  }
 
-  def selectLanguage(language: String): Unit = {
+  def selectLanguage(language: String): Unit =
     language match {
-      case "Welsh" => CheckOrChangeEmailAddressPage.languageSelector()
+      case "Welsh"   => CheckOrChangeEmailAddressPage.languageSelector()
       case "English" => CheckOrChangeEmailAddressPage.languageSelector()
-      case other => throw new Exception(s"Unexpected option: $other")
+      case other     => throw new Exception(s"Unexpected option: $other")
     }
-  }
 
   def asAnOrganisation(): Unit = {
     val asAnOrganisation: By = By.id("signInAs")
@@ -130,10 +124,10 @@ object TestOnlyStartPage extends BasePage {
   def enterEmailAddress(email: String): Unit = {
     val emailField: By = By.id("email")
     email match {
-      case "testEmail" => sendKeys(emailField, testEmail)
-      case "stored" => sendKeys(emailField, storedEmail)
-      case "valid" => sendKeys(emailField, validEmail)
-      case "verified" => sendKeys(emailField, verifiedEmail)
+      case "testEmail"  => sendKeys(emailField, testEmail)
+      case "stored"     => sendKeys(emailField, storedEmail)
+      case "valid"      => sendKeys(emailField, validEmail)
+      case "verified"   => sendKeys(emailField, verifiedEmail)
       case "verifiable" => sendKeys(emailField, verifiableEmail)
     }
   }
@@ -153,9 +147,8 @@ object TestOnlyStartPage extends BasePage {
     click(startNowButton)
   }
 
-  def testOnlyBackPage(): Unit = {
+  def testOnlyBackPage(): Unit =
     fluentWait.until(ExpectedConditions.urlContains("/test-only/back"))
-  }
 
   val successful: String = "Pet requested"
 }

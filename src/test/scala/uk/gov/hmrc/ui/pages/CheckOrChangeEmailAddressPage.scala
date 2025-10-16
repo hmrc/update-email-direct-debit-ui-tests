@@ -21,10 +21,10 @@ import org.openqa.selenium.support.ui.ExpectedConditions
 import uk.gov.hmrc.configuration.TestEnvironment
 import uk.gov.hmrc.ui.pages.TestOnlyStartPage.*
 
-
 object CheckOrChangeEmailAddressPage extends BasePage {
 
-  private val CheckOrChangeUrl: String = TestEnvironment.url("direct-debit-verify-email-frontend") + "/check-or-change-email-address"
+  private val CheckOrChangeUrl: String =
+    TestEnvironment.url("direct-debit-verify-email-frontend") + "/check-or-change-email-address"
 
   def goToCheckOrChangePage(): Unit = {
     get(CheckOrChangeUrl)
@@ -35,8 +35,8 @@ object CheckOrChangeEmailAddressPage extends BasePage {
     val main: By = By.id("main-content")
     emailType match {
       case "testEmail" => getText(main).contains(testEmail)
-      case "stored" => getText(main).contains(storedEmail)
-      case "valid" => getText(main).contains(validEmail)
+      case "stored"    => getText(main).contains(storedEmail)
+      case "valid"     => getText(main).contains(validEmail)
     }
   }
 
@@ -44,8 +44,8 @@ object CheckOrChangeEmailAddressPage extends BasePage {
     val radio: By = By.xpath("//*[@id=\"main-content\"]/div/div/div[1]/form/div/fieldset/div/div[3]/label")
     emailType match {
       case "testEmail" => getText(radio).contains(testEmail)
-      case "stored" => getText(radio).contains(storedEmail)
-      case "valid" => getText(radio).contains(validEmail)
+      case "stored"    => getText(radio).contains(storedEmail)
+      case "valid"     => getText(radio).contains(validEmail)
     }
   }
 //
@@ -66,9 +66,9 @@ object CheckOrChangeEmailAddressPage extends BasePage {
   def enterEmailAddress(email: String): Unit = {
     val emailField: By = By.id("newEmailInput")
     email match {
-      case "without@" => sendKeys(emailField, emailWithoutAt)
-      case "valid" => sendKeys(emailField, validEmail)
-      case "verified" => sendKeys(emailField, verifiedEmail)
+      case "without@"   => sendKeys(emailField, emailWithoutAt)
+      case "valid"      => sendKeys(emailField, validEmail)
+      case "verified"   => sendKeys(emailField, verifiedEmail)
       case "verifiable" => sendKeys(emailField, verifiableEmail)
     }
   }
@@ -102,23 +102,26 @@ object CheckOrChangeEmailAddressPage extends BasePage {
     click(languageSelector)
   }
 
-  def pageLoaded(): Unit = {
-    fluentWait.until(ExpectedConditions.titleIs("Check or change your email address - Check or change your Direct Debit email address - GOV.UK"))
-  }
+  def pageLoaded(): Unit =
+    fluentWait.until(
+      ExpectedConditions.titleIs(
+        "Check or change your email address - Check or change your Direct Debit email address - GOV.UK"
+      )
+    )
 
-  def noEmailSelectedError(): Unit = {
-    fluentWait.until(ExpectedConditions.titleIs("Error: Check or change your email address - Check or change your Direct Debit email address - GOV.UK"))
-  }
+  def noEmailSelectedError(): Unit =
+    fluentWait.until(
+      ExpectedConditions.titleIs(
+        "Error: Check or change your email address - Check or change your Direct Debit email address - GOV.UK"
+      )
+    )
 
   def clickSignOut(): Unit = {
     val signOut: By = By.className("hmrc-sign-out-nav")
     click(signOut)
   }
 
-  def govPageLoaded(): Unit = {
+  def govPageLoaded(): Unit =
     fluentWait.until(ExpectedConditions.urlContains("https://www.gov.uk/"))
-  }
-
-
 
 }
