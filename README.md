@@ -1,6 +1,6 @@
 # direct-debit-update-email-ui-tests
 
-UI test suite for the `Direct Debit Update Email`
+UI test suite for the `Update Email - Direct Debit`
 
 ## Pre-requisites
 
