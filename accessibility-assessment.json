@@ -1,0 +1,16 @@
+{
+  "exclusions": [
+    {
+      "path": "/auth-login-stub",
+      "reason": "Owned by a different team."
+    },
+      {
+      "path": "/email-verification",
+      "reason": "Owned by a different team."
+    },
+    {
+      "path": "/test-only",
+      "reason": "Page used for internal use only."
+    }
+  ]
+}
