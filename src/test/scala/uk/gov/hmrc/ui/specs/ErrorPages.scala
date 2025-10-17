@@ -16,7 +16,6 @@
 
 package uk.gov.hmrc.ui.specs
 
-import uk.gov.hmrc.ui.pages.TestOnlyStartPage.passcode
 import uk.gov.hmrc.ui.pages.{CheckOrChangeEmailAddressPage, EnterCodeToConfirmPage, TestOnlyStartPage}
 import uk.gov.hmrc.ui.specs.tags.*
 

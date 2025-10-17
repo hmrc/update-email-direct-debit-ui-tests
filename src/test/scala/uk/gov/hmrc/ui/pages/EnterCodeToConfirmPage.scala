@@ -30,7 +30,7 @@ object EnterCodeToConfirmPage extends BasePage {
     sendKeys(passcode, code)
   }
 
-  def tooManyPasscodes(): Unit = {
+  def tooManyPasscodes(): Unit =
     (0 to 5).foreach { _ =>
       emailVerificationPageLoaded()
       val passcode: By = By.id("passcode")
@@ -38,7 +38,6 @@ object EnterCodeToConfirmPage extends BasePage {
       clickContinue()
       emailVerificationPageLoaded()
     }
-  }
 
   def clickContinue(): Unit = {
     val continue: By = By.cssSelector("button.govuk-button")
@@ -75,10 +74,6 @@ object EnterCodeToConfirmPage extends BasePage {
     )
   }
 
-  
-  
-  
-  
   def emailVerificationPageLoaded(): Unit =
     fluentWait.until(ExpectedConditions.urlContains("/email-verification"))
 

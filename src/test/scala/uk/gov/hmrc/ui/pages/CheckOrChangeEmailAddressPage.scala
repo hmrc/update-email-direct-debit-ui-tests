@@ -35,8 +35,8 @@ object CheckOrChangeEmailAddressPage extends BasePage {
     val main: By = By.id("main-content")
     emailType match {
       case "testEmail" => getText(main).contains(testEmail)
-      case "stored" => getText(main).contains(storedEmail)
-      case "valid" => getText(main).contains(validEmail)
+      case "stored"    => getText(main).contains(storedEmail)
+      case "valid"     => getText(main).contains(validEmail)
     }
   }
 
@@ -44,8 +44,8 @@ object CheckOrChangeEmailAddressPage extends BasePage {
     val radio: By = By.xpath("//*[@id=\"main-content\"]/div/div/div[1]/form/div/fieldset/div/div[3]/label")
     emailType match {
       case "testEmail" => getText(radio).contains(testEmail)
-      case "stored" => getText(radio).contains(storedEmail)
-      case "valid" => getText(radio).contains(validEmail)
+      case "stored"    => getText(radio).contains(storedEmail)
+      case "valid"     => getText(radio).contains(validEmail)
     }
   }
   //
@@ -66,11 +66,11 @@ object CheckOrChangeEmailAddressPage extends BasePage {
   def enterEmailAddress(email: String): Unit = {
     val emailField: By = By.id("newEmailInput")
     email match {
-      case "without@" => sendKeys(emailField, emailWithoutAt)
-      case "valid" => sendKeys(emailField, validEmail)
-      case "verified" => sendKeys(emailField, verifiedEmail)
+      case "without@"   => sendKeys(emailField, emailWithoutAt)
+      case "valid"      => sendKeys(emailField, validEmail)
+      case "verified"   => sendKeys(emailField, verifiedEmail)
       case "verifiable" => sendKeys(emailField, verifiableEmail)
-      case other => sendKeys(emailField, email)
+      case other        => sendKeys(emailField, email)
     }
   }
 
@@ -150,7 +150,5 @@ object CheckOrChangeEmailAddressPage extends BasePage {
         EnterCodeToConfirmPage.clickBack()
     }
   }
-  
-  
-}
 
+}
