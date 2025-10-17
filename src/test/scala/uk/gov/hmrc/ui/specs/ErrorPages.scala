@@ -24,7 +24,7 @@ class ErrorPages extends BaseSpec {
 
   Feature("Error Pages") {
 
-    Scenario("User does not provide an email address", allTests) {
+    Scenario("User does not provide a selection", allTests) {
 
       Given("user is on Test only starter page")
       TestOnlyStartPage.goTo()
@@ -42,7 +42,7 @@ class ErrorPages extends BaseSpec {
       CheckOrChangeEmailAddressPage.clickContinue()
 
       Then("The the user is presented with Select an email address error message")
-      CheckOrChangeEmailAddressPage.noEmailSelectedError()
+      CheckOrChangeEmailAddressPage.errorPageLoaded()
     }
 
     Scenario("Too many incorrect passcode error page", allTests) {
@@ -113,7 +113,93 @@ class ErrorPages extends BaseSpec {
       EnterCodeToConfirmPage.tooManyEmailsPageLoaded()
     }
 
+    Scenario("Too many different email addresses -  too many passcode attempts", allTests) {
 
+      Given("user is on Test only starter page")
+      TestOnlyStartPage.goTo()
 
+      When("user signs in and starts a journey")
+      TestOnlyStartPage.selectUserType("Organisation")
+      TestOnlyStartPage.selectOrigin("EPAYE")
+      TestOnlyStartPage.selectRegime("paye")
+      TestOnlyStartPage.enterEmailAddress("verifiable")
+      TestOnlyStartPage.selectEmailBouncedYes()
+      TestOnlyStartPage.clickStartNow()
+
+      When("The user enters test0@email.com in Use a different email address")
+      CheckOrChangeEmailAddressPage.pageLoaded()
+      CheckOrChangeEmailAddressPage.selectDifferentEmailAddress()
+      CheckOrChangeEmailAddressPage.enterEmailAddress("test0@email.com")
+      CheckOrChangeEmailAddressPage.clickContinue()
+
+      And("The user enters incorrect passcode too many times")
+      EnterCodeToConfirmPage.pageLoaded()
+      EnterCodeToConfirmPage.tooManyPasscodes()
+      EnterCodeToConfirmPage.tooManyPasscodesPageLoaded()
+
+      When("The user goes back to the Check or Change Email Address Page")
+      CheckOrChangeEmailAddressPage.goToCheckOrChangePage()
+
+      When("The user enters 9 more different email address attempts")
+      CheckOrChangeEmailAddressPage.tooManyDifferentEmails(9)
+      EnterCodeToConfirmPage.tooManyEmailsPageLoaded()
+
+      When("The user goes back to the Check or Change Email Address Page")
+      CheckOrChangeEmailAddressPage.goToCheckOrChangePage()
+
+      When("The user enters test0@email.com in Use a different email address")
+      CheckOrChangeEmailAddressPage.pageLoaded()
+      CheckOrChangeEmailAddressPage.selectDifferentEmailAddress()
+      CheckOrChangeEmailAddressPage.enterEmailAddress("test0@email.com")
+      CheckOrChangeEmailAddressPage.clickContinue()
+
+      Then("Too many different email verify attempts page shows")
+      EnterCodeToConfirmPage.tooManyEmailsPageLoaded()
+    }
+
+    Scenario("User does not provide an email address in the new email address field", allTests) {
+
+      Given("user is on Test only starter page")
+      TestOnlyStartPage.goTo()
+
+      When("user signs in and starts a journey")
+      TestOnlyStartPage.selectUserType("Organisation")
+      TestOnlyStartPage.selectOrigin("BTA")
+      TestOnlyStartPage.selectRegime("paye")
+      TestOnlyStartPage.enterEmailAddress("testEmail")
+      TestOnlyStartPage.selectEmailBouncedYes()
+      TestOnlyStartPage.clickStartNow()
+
+      When("The user is on the Check or Change Email Address Page and does not enter a different email")
+      CheckOrChangeEmailAddressPage.pageLoaded()
+      CheckOrChangeEmailAddressPage.selectDifferentEmailAddress()
+      CheckOrChangeEmailAddressPage.clickContinue()
+
+      Then("The the user is presented with Select an email address error message")
+      CheckOrChangeEmailAddressPage.errorPageLoaded()
+    }
+
+    Scenario("User does not provide a valid email address in the new email address field", allTests) {
+
+      Given("user is on Test only starter page")
+      TestOnlyStartPage.goTo()
+
+      When("user signs in and starts a journey")
+      TestOnlyStartPage.selectUserType("Organisation")
+      TestOnlyStartPage.selectOrigin("EPAYE")
+      TestOnlyStartPage.selectRegime("paye")
+      TestOnlyStartPage.enterEmailAddress("testEmail")
+      TestOnlyStartPage.selectEmailBouncedYes()
+      TestOnlyStartPage.clickStartNow()
+
+      When("The user is on the Check or Change Email Address Page and does not enter a different email")
+      CheckOrChangeEmailAddressPage.pageLoaded()
+      CheckOrChangeEmailAddressPage.selectDifferentEmailAddress()
+      CheckOrChangeEmailAddressPage.enterEmailAddress("hello.com")
+      CheckOrChangeEmailAddressPage.clickContinue()
+
+      Then("The the user is presented with Select an email address error message")
+      CheckOrChangeEmailAddressPage.errorPageLoaded()
+    }
   }
 }

@@ -110,7 +110,7 @@ object CheckOrChangeEmailAddressPage extends BasePage {
       )
     )
 
-  def noEmailSelectedError(): Unit =
+  def errorPageLoaded(): Unit =
     fluentWait.until(
       ExpectedConditions.titleIs(
         "Error: Check or change your email address - Check or change your Direct Debit email address - GOV.UK"
