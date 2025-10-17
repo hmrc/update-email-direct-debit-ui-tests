@@ -30,6 +30,16 @@ object EnterCodeToConfirmPage extends BasePage {
     sendKeys(passcode, code)
   }
 
+  def tooManyPasscodes(): Unit = {
+    (0 to 5).foreach { _ =>
+      emailVerificationPageLoaded()
+      val passcode: By = By.id("passcode")
+      sendKeys(passcode, "DNCLRK")
+      clickContinue()
+      emailVerificationPageLoaded()
+    }
+  }
+
   def clickContinue(): Unit = {
     val continue: By = By.cssSelector("button.govuk-button")
     click(continue)
@@ -65,10 +75,22 @@ object EnterCodeToConfirmPage extends BasePage {
     )
   }
 
+  
+  
+  
+  
+  def emailVerificationPageLoaded(): Unit =
+    fluentWait.until(ExpectedConditions.urlContains("/email-verification"))
+
   def emailVerifiedPageLoaded(): Unit =
     fluentWait.until(ExpectedConditions.urlContains("/email-address-verified"))
 
   def tooManyEmailsPageLoaded(): Unit =
     fluentWait.until(ExpectedConditions.urlContains("/tried-to-verify-too-many-email-addresses"))
 
+  def tooManySameEmailsPageLoaded(): Unit =
+    fluentWait.until(ExpectedConditions.urlContains("/tried-to-verify-email-address-too-many-times"))
+
+  def tooManyPasscodesPageLoaded(): Unit =
+    fluentWait.until(ExpectedConditions.urlContains("/email-verification-code-entered-too-many-times"))
 }

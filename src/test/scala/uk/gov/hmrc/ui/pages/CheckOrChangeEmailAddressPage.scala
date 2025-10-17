@@ -35,8 +35,8 @@ object CheckOrChangeEmailAddressPage extends BasePage {
     val main: By = By.id("main-content")
     emailType match {
       case "testEmail" => getText(main).contains(testEmail)
-      case "stored"    => getText(main).contains(storedEmail)
-      case "valid"     => getText(main).contains(validEmail)
+      case "stored" => getText(main).contains(storedEmail)
+      case "valid" => getText(main).contains(validEmail)
     }
   }
 
@@ -44,14 +44,14 @@ object CheckOrChangeEmailAddressPage extends BasePage {
     val radio: By = By.xpath("//*[@id=\"main-content\"]/div/div/div[1]/form/div/fieldset/div/div[3]/label")
     emailType match {
       case "testEmail" => getText(radio).contains(testEmail)
-      case "stored"    => getText(radio).contains(storedEmail)
-      case "valid"     => getText(radio).contains(validEmail)
+      case "stored" => getText(radio).contains(storedEmail)
+      case "valid" => getText(radio).contains(validEmail)
     }
   }
-//
-//  def differentEmailAddress(): Unit = {
-//    val different: By = By.xpath("//*[@id=\"main-content\"]/div/div/div[1]/form/div/fieldset/div/div[1]/label")
-//  }
+  //
+  //  def differentEmailAddress(): Unit = {
+  //    val different: By = By.xpath("//*[@id=\"main-content\"]/div/div/div[1]/form/div/fieldset/div/div[1]/label")
+  //  }
 
   def selectDifferentEmailAddress(): Unit = {
     val different: By = By.xpath("//*[@id=\"main-content\"]/div/div/div[1]/form/div/fieldset/div/div[1]/label")
@@ -66,10 +66,11 @@ object CheckOrChangeEmailAddressPage extends BasePage {
   def enterEmailAddress(email: String): Unit = {
     val emailField: By = By.id("newEmailInput")
     email match {
-      case "without@"   => sendKeys(emailField, emailWithoutAt)
-      case "valid"      => sendKeys(emailField, validEmail)
-      case "verified"   => sendKeys(emailField, verifiedEmail)
+      case "without@" => sendKeys(emailField, emailWithoutAt)
+      case "valid" => sendKeys(emailField, validEmail)
+      case "verified" => sendKeys(emailField, verifiedEmail)
       case "verifiable" => sendKeys(emailField, verifiableEmail)
+      case other => sendKeys(emailField, email)
     }
   }
 
@@ -124,4 +125,32 @@ object CheckOrChangeEmailAddressPage extends BasePage {
   def govPageLoaded(): Unit =
     fluentWait.until(ExpectedConditions.urlContains("https://www.gov.uk/"))
 
+  def tooManySameEmails(times: Int): Unit = {
+    pageLoaded()
+    selectStoredEmail()
+    for (_ <- 2 to times) {
+      pageLoaded()
+      clickContinue()
+      EnterCodeToConfirmPage.pageLoaded()
+      EnterCodeToConfirmPage.clickBack()
+    }
+    pageLoaded()
+    clickContinue()
+  }
+
+  def tooManyDifferentEmails(times: Int): Unit = {
+    pageLoaded()
+    selectDifferentEmailAddress()
+    for (count <- 1 to times) {
+      pageLoaded()
+      enterEmailAddress("test" + count + "@email.com")
+      clickContinue()
+      if (count != times)
+        EnterCodeToConfirmPage.pageLoaded()
+        EnterCodeToConfirmPage.clickBack()
+    }
+  }
+  
+  
 }
+
