@@ -35,7 +35,6 @@ trait BaseSpec
     "curl -v -X POST -H \"Content-Type: application/json\" -d '{ \"token\": \"1234567\", \"principal\": \"direct-debit-update-email-frontend\", \"permissions\": [ { \"resourceType\": \"direct-debit-update-email-backend\", \"resourceLocation\": \"direct-debit-update-email/bta/start\", \"actions\": [\"WRITE\"]  }, { \"resourceType\": \"direct-debit-update-email-backend\", \"resourceLocation\": \"direct-debit-update-email/epaye/start\", \"actions\": [\"WRITE\"]  } ] }' http://localhost:8470/test-only/token".!!
     ()
   }
-    
 
   override def afterEach(): Unit =
     quitBrowser()
