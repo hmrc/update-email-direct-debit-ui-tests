@@ -20,6 +20,7 @@ import org.scalatest.featurespec.AnyFeatureSpec
 import org.scalatest.matchers.should.Matchers
 import org.scalatest.{BeforeAndAfterEach, GivenWhenThen}
 import uk.gov.hmrc.selenium.webdriver.{Browser, ScreenshotOnFailure}
+import scala.sys.process._
 
 trait BaseSpec
     extends AnyFeatureSpec
@@ -29,8 +30,11 @@ trait BaseSpec
     with Browser
     with ScreenshotOnFailure {
 
-  override def beforeEach(): Unit =
+  override def beforeEach(): Unit = {
     startBrowser()
+    "curl -v -X POST -H \"Content-Type: application/json\" -d '{ \"token\": \"1234567\", \"principal\": \"direct-debit-update-email-frontend\", \"permissions\": [ { \"resourceType\": \"direct-debit-update-email-backend\", \"resourceLocation\": \"direct-debit-update-email/bta/start\", \"actions\": [\"WRITE\"]  }, { \"resourceType\": \"direct-debit-update-email-backend\", \"resourceLocation\": \"direct-debit-update-email/epaye/start\", \"actions\": [\"WRITE\"]  } ] }' http://localhost:8470/test-only/token".!!
+    ()
+  }
 
   override def afterEach(): Unit =
     quitBrowser()
