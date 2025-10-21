@@ -1,4 +1,4 @@
-# direct-debit-update-email-ui-tests
+# update-email-direct-debit-ui-tests
 
 UI test suite for the `Update Email - Direct Debit`
 
